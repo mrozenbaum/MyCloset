@@ -11,7 +11,18 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     if request.method == 'GET':
         template_name = 'index.html'
-    return HttpResponse("Hello, world. You're at the closet-client app index.")
+
+        try:
+            welcome_user = Profile.objects.all().order_by("-id")
+            return render(request, template_name, {
+                  'welcome_user': welcome_user})
+        except TypeError:
+            return render(request, template_name, {
+                  'welcome_user': list('apple')})    
+    
+
+
+    # return HttpResponse("Hello, world. You're at the closet-client app index.")
 
 
 def login_user(request):

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  {% load static %}
+  {% load staticfiles %}
   {% block title %}<title>My Closet</title>{% endblock %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,27 +11,28 @@
 
   <!-- Add additional CSS in static file -->
 
+  {% load static %}
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="{% static 'closetclient/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
-
-
-
+<!-- body section begins -->
 <body>
+  
   {% block content %}
   <div class="container-fluid">
 
     {% include "navbar.html" %}
 
 
-
     <div class="row" id="row1">
       <div class="col-sm-10">
         <h2>MyCloset</h2>
         <h3>Where users can add items to their closet and keep track of their things! Users should take photos of everything they own to take full advantage of this app. Items can be stored in different categories.</h3>
-     
+        {% for profile in welcome_user %}
+        <p>{{ profile.closet_name }}</p>
+        {% endfor %}
       </div>
     </div>
 

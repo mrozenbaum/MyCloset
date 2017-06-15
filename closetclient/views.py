@@ -1,5 +1,5 @@
 from django.contrib.auth import login, authenticate, logout
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
 from .forms import UserForm, ProfileForm
 from django.template import RequestContext
@@ -9,7 +9,8 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
-
+    if request.method == 'GET':
+        template_name = 'index.html'
     return HttpResponse("Hello, world. You're at the closet-client app index.")
 
 
@@ -38,7 +39,7 @@ def login_user(request):
         # If authentication was successful, log the user in
         if authenticated_user is not None:
             login(request=request, user=authenticated_user)            
-            return HttpResponseRedirect('index')
+            return HttpResponseRedirect('/closetclient')
 
         else:
             # Bad login details were provided. So we can't log the user in.

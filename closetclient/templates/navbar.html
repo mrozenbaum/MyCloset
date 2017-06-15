@@ -1,0 +1,40 @@
+  {% block content %}
+  <div class="row">
+    <div class="col-md-12">
+      <h2 style="text-align: center;" class="main-header"> Welcome to MyCloset!! </h2>
+    </div>
+  </div>
+      <div class="row">
+        <div class="col-md-12">
+          
+        <div class="col-sm-2">
+          <br>
+          {% block sidebar %}
+          <nav role="navigation" class="navbar navbar-default">
+            <div class="navbar-header">
+              <ul class="sidebar-nav nav">
+                  <li><a href="{% url 'closetclient:index' %}">Home</a></li>
+                  {% if user.is_authenticated %}
+                  <li><a href="{% url 'closetclient:add_item' %}">Add Item</a></li>
+                  <li><a href="{% url 'closetclient:view_categories' %}">Categories</a></li>
+          
+          {% endif %}
+              </ul>
+          {% endblock %}
+            </div>
+          </nav>
+        </div>
+
+
+        <div class="col-sm-8 page-header">
+          {% if user.is_authenticated %}
+            <h3 style="text-align: center;"> Good to see you again, {{user.username}}!!</h3>
+            <a href="{% url 'closetclient:logout' %}">Logout</a>
+          {% else %}
+            <div class="register-link" style="text-align: center;"><a href="{% url 'closetclient:register' %}"><b>Join the future, Join MyCloset!</b></a></div>
+            <div style="text-align: center;"><a href="{% url 'closetclient:login' %}">You've been gone to long! :(  Log in!!! </a></div>
+          {% endif %}
+        </div>
+    </div>
+  </div>
+  {% endblock %}

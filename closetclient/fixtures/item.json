@@ -1,0 +1,107 @@
+[
+   {
+     "model": "closetclient.Item",
+     "pk": 1,
+     "fields": {
+       "user": 1,
+       "category": 1,
+       "description": "thin leather jacket",
+       "title": "leather jacket",
+       "brand": "Zara",
+       "price": 180.00,
+       "color": "black"
+     }
+   },
+   {
+     "model": "closetclient.Item",
+     "pk": 2,
+     "fields": {
+       "user": 2,
+       "category": 2,
+       "description": "bright yellow and thin fabric",
+       "title": "dress shirt",
+       "brand": "None",
+       "price": 20.00,
+       "color": "yellow"
+     }
+   },
+   {
+     "model": "closetclient.Item",
+     "pk": 3,
+     "fields": {
+       "user": 3,
+       "category": 3,
+       "description": "Dark black and very skinny",
+       "title": "High waist jeans",
+       "brand": "Zara",
+       "price": 30.00,
+       "color": "black"
+     }
+   },
+   {
+     "model": "closetclient.Item",
+     "pk": 4,
+     "fields": {
+       "user": 4,
+       "category": 4,
+       "description": "Blue long thin dress",
+       "title": "Maxi dress",
+       "brand": "None",
+       "price": 25.00,
+       "color": "blue"
+     }
+   },
+   {
+     "model": "closetclient.Item",
+     "pk": 5,
+     "fields": {
+       "user": 5,
+       "category": 5,
+       "description": "small crossbody with gold hardware.",
+       "title": "Valentino crossbody",
+       "brand": "Valentino",
+       "price": 250.00,
+       "color": "purple"
+     }
+   },
+   {
+     "model": "closetclient.Item",
+     "pk": 6,
+     "fields": {
+       "user": 6,
+       "category": 6,
+       "description": "Blue leather is snake skin print.",
+       "title": "Sneakers",
+       "brand": "Adidas",
+       "price": 35.00,
+       "color": "white"
+     }
+   },
+   {
+     "model": "closetclient.Item",
+     "pk": 7,
+     "fields": {
+       "user": 7,
+       "category": 7,
+       "description": "10k white gold and black diamonds.",
+       "title": "wedding ring",
+       "brand": "None",
+       "price": 650.00,
+       "color": "white gold"
+     }
+   },
+   {
+     "model": "closetclient.Item",
+     "pk": 8,
+     "fields": {
+       "user": 8,
+       "category": 8,
+       "description": "wool winter hat",
+       "title": "Wool Hat",
+       "brand": "BP",
+       "price": 25.00,
+       "color": "gray"
+     }
+   }
+]
+

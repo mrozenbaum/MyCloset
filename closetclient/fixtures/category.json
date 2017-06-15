@@ -1,0 +1,58 @@
+[
+  {
+    "pk": 1,
+    "model": "myclosetapp.Category",
+    "fields": {
+      "category_name": "outerwear"      
+    }
+  },
+  {
+    "pk": 2,
+    "model": "myclosetapp.Category",
+    "fields": {
+      "category_name": "tops"      
+    }
+  },
+  {
+    "pk": 3,
+    "model": "myclosetapp.Category",
+    "fields": {
+      "category_name": "bottoms"      
+    }
+  },
+  {
+    "pk": 4,
+    "model": "closetclient.Category",
+    "fields": {
+      "category_name": "dresses"      
+    }
+  },
+  {
+    "pk": 5,
+    "model": "closetclient.Category",
+    "fields": {
+      "category_name": "bags"      
+    }
+  },
+  {
+    "pk": 6,
+    "model": "closetclient.Category",
+    "fields": {
+      "category_name": "shoes"      
+    }
+  },
+  {
+    "pk": 7,
+    "model": "closetclient.Category",
+    "fields": {
+      "category_name": "jewelry"      
+    }
+  },
+  {
+    "pk": 8,
+    "model": "closetclient.Category",
+    "fields": {
+      "category_name": "accessories"      
+    }
+  }
+]

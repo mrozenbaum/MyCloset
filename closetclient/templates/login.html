@@ -1,0 +1,16 @@
+  {% extends 'index.html' %}
+  {% block content %}
+  {% load staticfiles %}
+        <h1>Login to MyCloset</h1>
+
+        <form id="login_form" method="post" action="{% url 'closetclient:login' %}">
+            {% csrf_token %}
+            Username: <input type="text" name="username" value="" size="50" />
+            <br />
+            Password: <input type="password" name="password" value="" size="50" />
+            <br />
+
+            <input type="submit" value="submit" />
+        </form>
+
+{% endblock %}

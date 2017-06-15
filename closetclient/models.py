@@ -12,9 +12,9 @@ class Profile(models.Model):
     returns: (None): N/A
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_name = models.TextField(blank=True, null=False, max_length=15)
+    closet_name = models.TextField(blank=True, null=False, max_length=15)
     def __str__(self):  # __unicode__ on Python 2
-        return self.user.profile_name
+        return self.user.closet_name
 
     # listen for changes on user. update post-save
     @receiver(post_save, sender=User)

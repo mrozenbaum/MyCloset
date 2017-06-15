@@ -14,7 +14,7 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('profile_name',)
+        fields = ('closet_name',)
 
 
 class ItemForm(forms.ModelForm):

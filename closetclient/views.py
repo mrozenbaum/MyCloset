@@ -38,7 +38,7 @@ def login_user(request):
         # If authentication was successful, log the user in
         if authenticated_user is not None:
             login(request=request, user=authenticated_user)            
-            return HttpResponseRedirect('/recommendations')
+            return HttpResponseRedirect('index')
 
         else:
             # Bad login details were provided. So we can't log the user in.
@@ -80,8 +80,7 @@ def register(request):
             user.set_password(user.password)
             user.save()   
 
-            user.profile.phone_number = profile_form.cleaned_data['phone_number'] 
-            user.profile.address = profile_form.cleaned_data['address'] 
+            user.profile.closet_name = profile_form.cleaned_data['closet_name'] 
             user.save()            
 
             # Update our variable to tell the template registration was successful.

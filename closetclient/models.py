@@ -12,7 +12,7 @@ class Profile(models.Model):
     returns: (None): N/A
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    closet_name = models.TextField(blank=True, null=False, max_length=15)
+    closet_name = models.TextField(blank=True, null=False, max_length=200)
     def __str__(self):  # __unicode__ on Python 2
         return self.user.closet_name
 

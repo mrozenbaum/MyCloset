@@ -13,7 +13,7 @@ def index(request):
         template_name = 'index.html'
 
         try:
-            welcome_user = Profile.objects.all().order_by("-id")
+            welcome_user = Profile.objects.filter(closet_name=request.user)
             return render(request, template_name, {
                   'welcome_user': welcome_user})
         except TypeError:
@@ -109,6 +109,16 @@ def register(request):
             'profile_form': profile_form})
 
 
+
+def view_account(request):
+    template_name = 'view_account.html'
+    if request.method == 'GET':
+        return render(request, template_name)
+
+    if request.method == "POST":
+        return render(request, template_name)         
+
+
 # Use the login_required() decorator to ensure only those logged in can access the view.
 @login_required
 def user_logout(request):
@@ -117,5 +127,7 @@ def user_logout(request):
 
     # Take the user back to the homepage. Is there a way to not hard code
     # in the URL in redirects?????
-    return HttpResponseRedirect('/')        
+    return HttpResponseRedirect('/')  
+
+
 

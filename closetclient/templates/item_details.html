@@ -1,4 +1,4 @@
-  {% extends '../index.html' %}
+  {% extends 'index.html' %}
   {% block content %}
   {% load staticfiles %}
 
@@ -17,7 +17,7 @@
       {%else%}
       {%endif%}
     
-      <li>Category: {{ item.category }}</li>
+      <li>Category: {{ item.category_name }}</li>
       <li>Brand: {{ item.brand }}</li>
       <li>Price: {{ item.price }}</li>
       <li>Color: {{ item.color }}</li> 

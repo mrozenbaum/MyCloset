@@ -4,7 +4,7 @@
      "pk": 1,
      "fields": {
        "user": 1,
-       "category": 1,
+       "category_name": 1,
        "description": "thin leather jacket",
        "title": "leather jacket",
        "brand": "Zara",
@@ -17,7 +17,7 @@
      "pk": 2,
      "fields": {
        "user": 2,
-       "category": 2,
+       "category_name": 2,
        "description": "bright yellow and thin fabric",
        "title": "dress shirt",
        "brand": "None",
@@ -30,7 +30,7 @@
      "pk": 3,
      "fields": {
        "user": 3,
-       "category": 3,
+       "category_name": 3,
        "description": "Dark black and very skinny",
        "title": "High waist jeans",
        "brand": "Zara",
@@ -43,7 +43,7 @@
      "pk": 4,
      "fields": {
        "user": 4,
-       "category": 4,
+       "category_name": 4,
        "description": "Blue long thin dress",
        "title": "Maxi dress",
        "brand": "None",
@@ -56,7 +56,7 @@
      "pk": 5,
      "fields": {
        "user": 5,
-       "category": 5,
+       "category_name": 5,
        "description": "small crossbody with gold hardware.",
        "title": "Valentino crossbody",
        "brand": "Valentino",
@@ -69,7 +69,7 @@
      "pk": 6,
      "fields": {
        "user": 6,
-       "category": 6,
+       "category_name": 6,
        "description": "Blue leather is snake skin print.",
        "title": "Sneakers",
        "brand": "Adidas",
@@ -82,7 +82,7 @@
      "pk": 7,
      "fields": {
        "user": 7,
-       "category": 7,
+       "category_name": 7,
        "description": "10k white gold and black diamonds.",
        "title": "wedding ring",
        "brand": "None",
@@ -95,7 +95,7 @@
      "pk": 8,
      "fields": {
        "user": 8,
-       "category": 8,
+       "category_name": 8,
        "description": "wool winter hat",
        "title": "Wool Hat",
        "brand": "BP",

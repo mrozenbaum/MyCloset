@@ -34,13 +34,13 @@ class Category(models.Model):
     args: models.Model: (NA): models class given by Django
     returns: (None): N/A
     """
-    category_name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
     def __str__(self):  # __unicode__ on Python 2
-        return self.category_name
+        return self.name
 
     def get_items(self):
         print(dir(self))
-        return Item.objects.filter(category=self)
+        return Item.objects.filter(name=self)
 
 
 class Item(models.Model):
@@ -62,7 +62,7 @@ class Item(models.Model):
         ('accessories', 'ACCESSORIES'),
         ('jewelry', 'JEWELRY'))
 
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, choices=CATEGORY_CHOICES)
+    category_name = models.ForeignKey(Category, on_delete=models.CASCADE, choices=CATEGORY_CHOICES)
     title = models.CharField(blank=False, max_length=255)
     brand = models.CharField(blank=True, max_length=255)
     description = models.TextField(null=False, max_length=500)

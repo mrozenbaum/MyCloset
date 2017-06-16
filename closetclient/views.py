@@ -152,15 +152,16 @@ def add_item(request):
         def create_item(item_image):
             i = Item(
                 user=request.user,
-                category=form_data['category'],
+                category_name=form_data['category_name'],
                 description=form_data['description'],
                 title=form_data['title'],
                 brand=form_data['brand'],
                 price=form_data['price'],
+                color=form_data['color'],
                 image_path=item_image,
 
                 # create instance of category of where category = the users choice
-                item_category=Category.objects.get(category=form_data['category']))
+                item_category=Category.objects.get(category_name=form_data['name']))
             i.save()
             return i
 
@@ -174,7 +175,7 @@ def add_item(request):
 
             item = create_item(item_image)
         
-        return HttpResponseRedirect('item_details/{}'.format(item.title, item.image_path, item.category))
+        return HttpResponseRedirect('item_details/{}'.format(item.title, item.description, item.brand, item.image_path, item.color, item.category_name))
 
 
 
@@ -183,16 +184,26 @@ def add_item(request):
 
 def item_details(request, item_id):
 
+    item = get_object_or_404(Item, pk=item_id)
 
-    template_name = 'item_details.html'
     if request.method == 'GET':
-        return render(request, template_name)
+        template_name = 'item_details.html'
+        try:
+            if request.user.is_authenticated():
+                item = Item.objects.get(item=item, user=request.user)
+            else:
+                item = None
+        except ObjectDoesNotExist:
+            item = None
 
-    if request.method == "POST":
-        return render(request, template_name)
+    elif request.method == 'POST:        
 
 
+        return render(request, template_name, {
+            'item': item,
+            })
 
+    
 
 
 

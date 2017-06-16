@@ -1,0 +1,11 @@
+  {% extends 'index.html' %}
+  {% block content %}
+  {% load staticfiles %}
+
+    {% include "navbar.html" %}
+
+    <h1>Item Added</h1>
+
+    <a href="{% url 'closetclient:item_details' %}">List Items</a>
+
+{% endblock %}

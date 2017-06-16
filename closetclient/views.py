@@ -1,12 +1,15 @@
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
-from .forms import UserForm, ProfileForm
+from .forms import UserForm, ProfileForm, ItemForm
 from django.template import RequestContext
 from .models import User, Profile, Category, Item
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
+
+
 
 def index(request):
     if request.method == 'GET':
@@ -22,7 +25,6 @@ def index(request):
     
 
 
-    # return HttpResponse("Hello, world. You're at the closet-client app index.")
 
 
 def login_user(request):
@@ -58,6 +60,7 @@ def login_user(request):
             return HttpResponse("Invalid login details supplied.")
 
     return render(request, 'login.html', {}, context)
+
 
 
 
@@ -110,6 +113,10 @@ def register(request):
 
 
 
+
+
+
+
 def view_account(request):
     template_name = 'view_account.html'
     if request.method == 'GET':
@@ -119,15 +126,108 @@ def view_account(request):
         return render(request, template_name)         
 
 
+
+
+
+
+def add_item(request):
+    '''
+    purpose:
+    arg:
+    author:
+
+    '''
+    if request.method == 'GET':
+        item_form = ItemForm()
+        template_name = 'add_item.html'
+        return render(request, template_name, {'item_form': item_form})
+
+    # if POST, gather form data and save, then redirect to details of that item
+    elif request.method == 'POST':
+        form_data = request.POST
+        file_data = request.FILES
+        print(file_data)
+
+
+        def create_item(item_image):
+            i = Item(
+                user=request.user,
+                category=form_data['category'],
+                description=form_data['description'],
+                title=form_data['title'],
+                brand=form_data['brand'],
+                price=form_data['price'],
+                image_path=item_image,
+
+                # create instance of category of where category = the users choice
+                item_category=Category.objects.get(category=form_data['category']))
+            i.save()
+            return i
+
+        item_image = None
+
+        #if trying to upload an image:
+        if 'image_path' in request.FILES:
+            item_image = request.FILES['image_path']
+        else:
+            item_image = None
+
+            item = create_item(item_image)
+        
+        return HttpResponseRedirect('item_details/{}'.format(item.title, item.image_path, item.category))
+
+
+
+
+
+
+def item_details(request, item_id):
+
+
+    template_name = 'item_details.html'
+    if request.method == 'GET':
+        return render(request, template_name)
+
+    if request.method == "POST":
+        return render(request, template_name)
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Use the login_required() decorator to ensure only those logged in can access the view.
 @login_required
 def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
-    logout(request)
+    if request.user.profile().is_valid():
+        logout(request)
 
     # Take the user back to the homepage. Is there a way to not hard code
     # in the URL in redirects?????
-    return HttpResponseRedirect('/')  
+        return HttpResponseRedirect('/')  
 
 
 

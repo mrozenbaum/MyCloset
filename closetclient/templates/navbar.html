@@ -14,9 +14,12 @@
             <div class="navbar-header">
               <ul class="sidebar-nav nav">
                   <li><a href="{% url 'closetclient:index' %}">Home</a></li>
+                  {% if user.is_authenticated %}
                   <li><a href="{% url 'closetclient:view_account' %}">Account</a></li>
-                
+                  <li><a href="{% url 'closetclient:add' %}">Add Item</a></li>
+
               </ul>
+              {% endif %}
           {% endblock %}
             </div>
           </nav>

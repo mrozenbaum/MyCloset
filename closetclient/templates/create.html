@@ -1,10 +1,9 @@
-
   {% extends 'index.html' %}
   {% load staticfiles %}
   {% block content %}
     {% include "navbar.html" %}
 
-    <h1>Add something to your closet.</h1>
+    <h1>Add Item</h1>
 
 
     <form action="{% url 'closetclient:add' %}" method="post" enctype="multipart/form-data">

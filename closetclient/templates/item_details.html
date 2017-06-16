@@ -1,0 +1,31 @@
+  {% extends '../index.html' %}
+  {% block content %}
+  {% load staticfiles %}
+
+    {% include "navbar.html" %}
+
+    <h1>My Item Details</h1>
+    <h2> Title: {{ item.title }}</h2>
+    {% if user.is_authenticated %}
+
+    <ol>
+      <li>Description: {{ item.description }}</li>
+    <!-- image path -->
+    {%if product.image_path%}
+      <img src="/media/{{item.image_path}}" alt="{{item.
+      title}}" width="150">
+      {%else%}
+      {%endif%}
+    
+      <li>Category: {{ item.category }}</li>
+      <li>Brand: {{ item.brand }}</li>
+      <li>Price: {{ item.price }}</li>
+      <li>Color: {{ item.color }}</li> 
+    </ol> 
+
+    
+
+    {% endif %}
+{% endblock %}  
+
+

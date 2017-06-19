@@ -4,12 +4,10 @@
      "pk": 1,
      "fields": {
        "user": 1,
-       "category_name": 1,
-       "description": "thin leather jacket",
+       "item_category": 1,
        "title": "leather jacket",
-       "brand": "Zara",
-       "price": 180.00,
-       "color": "black"
+       "description": "thin leather jacket",
+       "brand": "Zara"
      }
    },
    {
@@ -17,12 +15,10 @@
      "pk": 2,
      "fields": {
        "user": 2,
-       "category_name": 2,
-       "description": "bright yellow and thin fabric",
+       "item_category": 2,
        "title": "dress shirt",
-       "brand": "None",
-       "price": 20.00,
-       "color": "yellow"
+       "description": "bright yellow and thin fabric",
+       "brand": "None"
      }
    },
    {
@@ -30,12 +26,10 @@
      "pk": 3,
      "fields": {
        "user": 3,
-       "category_name": 3,
-       "description": "Dark black and very skinny",
+       "item_category": 3,
        "title": "High waist jeans",
-       "brand": "Zara",
-       "price": 30.00,
-       "color": "black"
+       "description": "Dark black and very skinny",
+       "brand": "Zara"
      }
    },
    {
@@ -43,12 +37,10 @@
      "pk": 4,
      "fields": {
        "user": 4,
-       "category_name": 4,
-       "description": "Blue long thin dress",
+       "item_category": 4,
        "title": "Maxi dress",
-       "brand": "None",
-       "price": 25.00,
-       "color": "blue"
+       "description": "Blue long thin dress",
+       "brand": "None"
      }
    },
    {
@@ -56,12 +48,10 @@
      "pk": 5,
      "fields": {
        "user": 5,
-       "category_name": 5,
-       "description": "small crossbody with gold hardware.",
+       "item_category": 5,
        "title": "Valentino crossbody",
-       "brand": "Valentino",
-       "price": 250.00,
-       "color": "purple"
+       "description": "small crossbody with gold hardware.",
+       "brand": "Valentino"
      }
    },
    {
@@ -69,12 +59,10 @@
      "pk": 6,
      "fields": {
        "user": 6,
-       "category_name": 6,
-       "description": "Blue leather is snake skin print.",
+       "item_category": 6,
        "title": "Sneakers",
-       "brand": "Adidas",
-       "price": 35.00,
-       "color": "white"
+       "description": "None",
+       "brand": "Adidas"
      }
    },
    {
@@ -82,12 +70,10 @@
      "pk": 7,
      "fields": {
        "user": 7,
-       "category_name": 7,
-       "description": "10k white gold and black diamonds.",
+       "item_category": 7,
        "title": "wedding ring",
-       "brand": "None",
-       "price": 650.00,
-       "color": "white gold"
+       "description": "10k white gold and black diamonds.",
+       "brand": "None"
      }
    },
    {
@@ -95,12 +81,10 @@
      "pk": 8,
      "fields": {
        "user": 8,
-       "category_name": 8,
-       "description": "wool winter hat",
+       "item_category": 8,
        "title": "Wool Hat",
-       "brand": "BP",
-       "price": 25.00,
-       "color": "gray"
+       "description": "wool winter hat",
+       "brand": "BP"
      }
    }
 ]

@@ -2,6 +2,10 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.db import models
+from django.utils import timezone
+import datetime
+
+
 
 # Create your models here.
 class Profile(models.Model):
@@ -12,9 +16,12 @@ class Profile(models.Model):
     returns: (None): N/A
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    closet_name = models.TextField(blank=True, null=False, max_length=200)
+    account_name = models.CharField(max_length=200)
+    zipcode = models.CharField(max_length=10)
+
+    """Returns a string of account text to interact with interface """
     def __str__(self):  # __unicode__ on Python 2
-        return self.user.closet_name
+        return self.user.account_name
 
     # listen for changes on user. update post-save
     @receiver(post_save, sender=User)
@@ -34,13 +41,14 @@ class Category(models.Model):
     args: models.Model: (NA): models class given by Django
     returns: (None): N/A
     """
-    name = models.CharField(max_length=200)
-    def __str__(self):  # __unicode__ on Python 2
-        return self.name
+    category_name = models.CharField(max_length=200, unique=True)
 
-    def get_items(self):
+    def __str__(self):  # __unicode__ on Python 2
+        return self.category_name
+
+    def add_items(self):
         print(dir(self))
-        return Item.objects.filter(name=self)
+        return Item.objects.filter(item_category=self)
 
 
 class Item(models.Model):
@@ -51,6 +59,7 @@ class Item(models.Model):
     returns: (None): N/A
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
     # django will display a dropdown with these choices
     CATEGORY_CHOICES = (
         ('outerwear', 'OUTERWEAR'),
@@ -62,14 +71,15 @@ class Item(models.Model):
         ('accessories', 'ACCESSORIES'),
         ('jewelry', 'JEWELRY'))
 
-    category_name = models.ForeignKey(Category, on_delete=models.CASCADE, choices=CATEGORY_CHOICES)
+    item_category = models.ForeignKey(Category, on_delete=models.CASCADE, choices=CATEGORY_CHOICES)
     title = models.CharField(blank=False, max_length=255)
-    brand = models.CharField(blank=True, max_length=255)
     description = models.TextField(null=False, max_length=500)
-    price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
-    color = models.CharField(blank=True, max_length=255)
+    brand = models.CharField(blank=True, max_length=255)
     image_path = models.ImageField(upload_to='images/', blank=True)
 
+    class Meta:
+        verbose_name_plural = 'items'
 
+    """ returns a string of item text to interact with interface."""    
     def __str__(self):  # __unicode__ on Python 2
         return self.title        

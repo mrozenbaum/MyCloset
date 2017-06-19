@@ -16,7 +16,7 @@
                   <li><a href="{% url 'closetclient:index' %}">Home</a></li>
                   {% if user.is_authenticated %}
                   <li><a href="{% url 'closetclient:view_account' %}">Account</a></li>
-                  <li><a href="{% url 'closetclient:add' %}">Add Item</a></li>
+                  <li><a href="{% url 'closetclient:add_item' %}">Add Item</a></li>
 
               </ul>
               {% endif %}

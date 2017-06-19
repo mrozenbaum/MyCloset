@@ -2,7 +2,9 @@
   {
     "pk": 1,
     "model": "closetclient.Profile",
-    "fields": {     
+    "fields": { 
+      "account_name": "Miriam's Closet",
+      "zipcode": "37205"   
     }
   }
 ]

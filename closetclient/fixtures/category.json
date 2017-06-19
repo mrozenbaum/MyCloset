@@ -3,56 +3,56 @@
     "pk": 1,
     "model": "myclosetapp.Category",
     "fields": {
-      "name": "outerwear"      
+      "category_name": "outerwear"      
     }
   },
   {
     "pk": 2,
     "model": "myclosetapp.Category",
     "fields": {
-      "name": "tops"      
+      "category_name": "tops"      
     }
   },
   {
     "pk": 3,
     "model": "myclosetapp.Category",
     "fields": {
-      "name": "bottoms"      
+      "category_name": "bottoms"      
     }
   },
   {
     "pk": 4,
     "model": "closetclient.Category",
     "fields": {
-      "name": "dresses"      
+      "category_name": "dresses"      
     }
   },
   {
     "pk": 5,
     "model": "closetclient.Category",
     "fields": {
-      "name": "bags"      
+      "category_name": "bags"      
     }
   },
   {
     "pk": 6,
     "model": "closetclient.Category",
     "fields": {
-      "name": "shoes"      
+      "category_name": "shoes"      
     }
   },
   {
     "pk": 7,
     "model": "closetclient.Category",
     "fields": {
-      "name": "jewelry"      
+      "category_name": "jewelry"      
     }
   },
   {
     "pk": 8,
     "model": "closetclient.Category",
     "fields": {
-      "name": "accessories"      
+      "category_name": "accessories"      
     }
   }
 ]

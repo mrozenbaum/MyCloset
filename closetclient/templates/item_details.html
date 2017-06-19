@@ -2,30 +2,49 @@
   {% block content %}
   {% load staticfiles %}
 
+
     {% include "navbar.html" %}
+    <h1>Item Details Views</h1>
 
-    <h1>My Item Details</h1>
-    <h2> Title: {{ item.title }}</h2>
-    {% if user.is_authenticated %}
+      {% load app_filters %}
 
-    <ol>
-      <li>Description: {{ item.description }}</li>
-    <!-- image path -->
-    {%if product.image_path%}
-      <img src="/media/{{item.image_path}}" alt="{{item.
-      title}}" width="150">
-      {%else%}
-      {%endif%}
-    
-      <li>Category: {{ item.category_name }}</li>
-      <li>Brand: {{ item.brand }}</li>
-      <li>Price: {{ item.price }}</li>
-      <li>Color: {{ item.color }}</li> 
-    </ol> 
 
-    
 
+    <h2>Title: {{ item.title }}</h2>
+    {% if request.user.is_authenticated %}
+      <form action="{% url 'closetclient:create_item' item.id %}" method="post">
+      {% csrf_token %}
+      </form>
     {% endif %}
+    
+      <ol>
+        <li>Description: {{ item.description }}</li>
+        <li>Color: {{item.color}}</li>
+        <li>Brand: {{item.brand}}</li>
+        <li>Price: {{item.price}}</li>
+
+        <!-- image path -->
+        {% if item.image_path %}
+          <img src="/media/{{item.image_path}}" alt="{{item.
+          title}}" width="150">
+      
+    {% endif %}
+      </ol> 
+{% endblock %}       
+
+    <!-- {% if request.user.is_authenticated %}
+    <form method="post" action="{% url 'closetclient:add_item' item.id %}">
+
+     {% for choice in item_form.as_p %}
+
+     <input type="text" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+     <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+    {% endfor %}
+    {% endif %}
+
+    <input type="submit" value="Add ItemForm" />
+    </form>
 {% endblock %}  
 
 
+ -->

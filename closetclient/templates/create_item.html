@@ -1,12 +1,13 @@
+
   {% extends 'index.html' %}
   {% load staticfiles %}
   {% block content %}
     {% include "navbar.html" %}
 
-    <h1>Add Item</h1>
+    <h1>Add an item to your closet:</h1>
 
-
-    <form action="{% url 'closetclient:add' %}" method="post" enctype="multipart/form-data">
+    <!-- this is the empty form rendering -->
+    <form action="{% url 'closetclient:add_item' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ item_form.as_p }}
       <input type="submit" value="Add It" />

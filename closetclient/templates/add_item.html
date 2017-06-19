@@ -4,12 +4,13 @@
   {% block content %}
     {% include "navbar.html" %}
 
-    <h1>Add something to your closet.</h1>
+    <h1>Add an item to your closet:</h1>
 
 
-    <form action="{% url 'closetclient:add' %}" method="post" enctype="multipart/form-data">
+    <form action="{% url 'closetclient:add_item' item_id=item.id %}" method="get" class="item_form" enctype="multipart/form-data">
       {% csrf_token %}
       {{ item_form.as_p }}
+      
       <input type="submit" value="Add It" />
     </form>
   {% endblock %} 

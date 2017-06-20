@@ -5,6 +5,8 @@ from .forms import UserForm, ProfileForm, ItemForm
 from django.template import RequestContext
 from .models import User, Profile, Category, Item
 from django.contrib.auth.decorators import login_required
+from django.utils.datastructures import MultiValueDictKeyError
+
 
 
 # Create your views here.
@@ -147,37 +149,45 @@ def add_item(request):
         form_data = request.POST
         file_data = request.FILES
         print(file_data)
+        form_data = ItemForm(request.POST)
+        if form_data.is_valid():
+            form_data.save()
+            return HttpResponseRedirect('/item_details')
+
 
 
         def create_item(item_image):
             i = Item(
                 user=request.user,
-                category_name=form_data['category_name'],
-                description=form_data['description'],
                 title=form_data['title'],
+                description=form_data['description'],
                 brand=form_data['brand'],
-                price=form_data['price'],
-                color=form_data['color'],
                 image_path=item_image,
 
                 # create instance of category of where category = the users choice
-                item_category=Category.objects.get(category_name=form_data['name']))
+                item_category=Category.objects.get(category_name=form_data['item_category']))
             i.save()
             return i
 
         item_image = None
 
         #if trying to upload an image:
-        if 'image_path' in request.FILES:
+        if 'image_path' in request.POST:
             item_image = request.FILES['image_path']
         else:
             item_image = None
 
-            item = create_item(item_image)
+        try:
+            if 'image_path' in request.FILES:
+                item_image = request.FILES['image_path']
+                item = create_item(item_image)
         
-        return HttpResponseRedirect('item_details/{}'.format(item.title, item.description, item.brand, item.image_path, item.color, item.category_name))
-
-
+            return HttpResponseRedirect('item_details/{}'.format(item.id))
+        except MultiValueDictKeyError:
+            item_image = False
+            item = create_item(item_image)
+            return HttpResponseRedirect('item_details/{}'.format(item.id))
+            return render(request, 'item_details.html', {}, context)
 
 
 
@@ -196,11 +206,11 @@ def item_details(request, item_id):
         except ObjectDoesNotExist:
             item = None
 
-    elif request.method == 'POST:        
+    elif request.method == 'POST':        
 
 
         return render(request, template_name, {
-            'item': item,
+            'item_details': item_details,
             })
 
     

@@ -7,7 +7,17 @@
     <h1>My Item Details</h1>
     <h2> Title: {{ item.title }}</h2>
     {% if user.is_authenticated %}
-
+      <form id="login_form" method="post">
+          {% csrf_token %}
+          {% if product_liked %}
+            <h6><b>You {{product_liked}}</b></h6>
+          <br />
+          {% else %}
+          <input type="submit" name="like_dislike" value="Like"  />
+          <br />
+          <input type="submit" name="like_dislike" value="Dislike" />
+          {% endif %}
+      </form>
     <ol>
       <li>Description: {{ item.description }}</li>
     <!-- image path -->

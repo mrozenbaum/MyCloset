@@ -13,8 +13,9 @@ class Profile(models.Model):
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     closet_name = models.TextField(blank=True, null=False, max_length=200)
+
     def __str__(self):  # __unicode__ on Python 2
-        return self.user.closet_name
+        return self.user.first_name
 
     # listen for changes on user. update post-save
     @receiver(post_save, sender=User)
@@ -34,13 +35,14 @@ class Category(models.Model):
     args: models.Model: (NA): models class given by Django
     returns: (None): N/A
     """
-    name = models.CharField(max_length=200)
+    category_name = models.TextField()
+
     def __str__(self):  # __unicode__ on Python 2
-        return self.name
+        return self.category_name
 
     def get_items(self):
         print(dir(self))
-        return Item.objects.filter(name=self)
+        return Item.objects.filter(item_category=self)
 
 
 class Item(models.Model):
@@ -51,6 +53,7 @@ class Item(models.Model):
     returns: (None): N/A
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
     # django will display a dropdown with these choices
     CATEGORY_CHOICES = (
         ('outerwear', 'OUTERWEAR'),
@@ -62,12 +65,10 @@ class Item(models.Model):
         ('accessories', 'ACCESSORIES'),
         ('jewelry', 'JEWELRY'))
 
-    category_name = models.ForeignKey(Category, on_delete=models.CASCADE, choices=CATEGORY_CHOICES)
+    item_category = models.ForeignKey(Category, on_delete=models.CASCADE, choices=CATEGORY_CHOICES)
     title = models.CharField(blank=False, max_length=255)
     brand = models.CharField(blank=True, max_length=255)
     description = models.TextField(null=False, max_length=500)
-    price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
-    color = models.CharField(blank=True, max_length=255)
     image_path = models.ImageField(upload_to='images/', blank=True)
 
 
